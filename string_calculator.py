@@ -6,9 +6,14 @@ def Add(nums: str) -> int:
     if not nums:
         return 0
 
-    # Convert string to list of nums and sum it
+    # Convert string to list of string
     num_list = re.split(",", nums)
-    num_list = [int(num) for num in num_list]
+
+    # Checking num is less than 1000
+    try:
+        num_list = [int(num) for num in num_list if num and int(num) <= 1000]
+    except ValueError:
+        raise ValueError(f"Invalid input format: {nums}")
 
     # Checking negative nums
     negatives = [num for num in num_list if num < 0]
