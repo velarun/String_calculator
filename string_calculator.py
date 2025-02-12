@@ -8,6 +8,10 @@ def Add(nums: str) -> int:
 
     delimiter = ",|\n"
 
+    # Checking new line with comma as prefix or suffix makes expression partial
+    if re.search(r",\n|\n,", nums):
+        raise ValueError(f"Invalid input format: {nums}")
+
     # Convert string to list of string
     num_list = re.split(delimiter, nums)
 

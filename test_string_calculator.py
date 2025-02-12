@@ -39,3 +39,10 @@ class TestStringCalculator(unittest.TestCase):
     # Omitting new line and get the result
     def test_newline_as_delimiter(self):
         self.assertEqual(Add("1\n2,3"), 6)
+
+    # Check if string has partial value with newline
+    def test_newline_as_delimiter_with_comma(self):
+        with self.assertRaises(ValueError) as context:
+            Add("1,\n")
+        self.assertEqual(str(context.exception),
+                         "Invalid input format: 1,\n")
