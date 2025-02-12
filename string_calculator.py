@@ -6,8 +6,10 @@ def Add(nums: str) -> int:
     if not nums:
         return 0
 
+    delimiter = ",|\n"
+
     # Convert string to list of string
-    num_list = re.split(",", nums)
+    num_list = re.split(delimiter, nums)
 
     # Checking num is less than 1000
     try:
