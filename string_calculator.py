@@ -12,6 +12,21 @@ def Add(nums: str) -> int:
     if re.search(r",\n|\n,", nums):
         raise ValueError(f"Invalid input format: {nums}")
 
+    # Handling custom delimiters
+    if nums.startswith("//"):
+        if "\n" not in nums:
+            raise ValueError(f"Invalid input format: {nums}")
+
+        delimiter_sec, nums = nums.split(
+            "\n", 1)
+
+        delimiters = re.findall(r"\[(.*?)\]", delimiter_sec)
+
+        if not delimiters:
+            delimiters = [delimiter_sec[2:]]
+
+        delimiter = "|".join(map(re.escape, delimiters))
+
     # Convert string to list of string
     num_list = re.split(delimiter, nums)
 

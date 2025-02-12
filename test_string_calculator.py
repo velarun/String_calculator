@@ -46,3 +46,16 @@ class TestStringCalculator(unittest.TestCase):
             Add("1,\n")
         self.assertEqual(str(context.exception),
                          "Invalid input format: 1,\n")
+
+    # Checking on custom delmiters part
+    def test_custom_delimiter(self):
+        self.assertEqual(Add("//;\n1;2"), 3)
+
+    def test_long_delimiters(self):
+        self.assertEqual(Add("//[***]\n1***2***3"), 6)
+
+    def test_multiple_custom_delimiters(self):
+        self.assertEqual(Add("//[*][%]\n1*2%3"), 6)
+
+    def test_multiple_long_custom_delimiters(self):
+        self.assertEqual(Add("//[***][%%]\n1***2%%3"), 6)
