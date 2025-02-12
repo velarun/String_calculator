@@ -14,3 +14,13 @@ class TestStringCalculator(unittest.TestCase):
     # Checking zero
     def test_zero(self):
         self.assertEqual(Add(0), 0)
+
+    # Checking positive use case with string of nums
+    def test_single_number(self):
+        self.assertEqual(Add("1"), 1)
+
+    def test_two_numbers(self):
+        self.assertEqual(Add("1,2"), 3)
+
+    def test_multiple_numbers(self):
+        self.assertEqual(Add("1,2,3,4"), 10)
